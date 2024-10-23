@@ -25,13 +25,37 @@
         <div class="btn">
             <button id="start">Start</button>
             <button id="end">End</button>
-
         </div>
     </div>
-
 </div>
 
 <!--JQuery-->
 <script src="../assests/lib/jquery-3.7.1.min.js"></script>
+<script>
+    let interval;
+
+    $("#start").click(function () {
+        let arr1 = ["red", "green", "blue", "yellow", "purple", "hotpink"];
+
+        if (interval) {
+            clearInterval(interval);
+        }
+        interval = setInterval(() => {
+            let last = arr1.pop();
+            arr1.unshift(last);
+
+            $(".color").eq(0).css("background-color", arr1[0]);
+            $(".color").eq(1).css("background-color", arr1[1]);
+            $(".color").eq(2).css("background-color", arr1[2]);
+            $(".color").eq(3).css("background-color", arr1[3]);
+            $(".color").eq(4).css("background-color", arr1[4]);
+            $(".color").eq(5).css("background-color", arr1[5]);
+        }, 2000);
+    });
+
+    $("#end").click(function () {
+        clearInterval(interval);
+    });
+</script>
 </body>
 </html>
